@@ -39,6 +39,7 @@
       this.label2 = new System.Windows.Forms.Label();
       this.WordListLabel = new System.Windows.Forms.Label();
       this.groupBox2 = new System.Windows.Forms.GroupBox();
+      this.SplitPercentageValue = new System.Windows.Forms.ComboBox();
       this.BookCompound = new System.Windows.Forms.Label();
       this.label7 = new System.Windows.Forms.Label();
       this.BookUnrooted = new System.Windows.Forms.Label();
@@ -66,7 +67,6 @@
       this.FilterText = new System.Windows.Forms.TextBox();
       this.FilterUnrooted = new System.Windows.Forms.CheckBox();
       this.WriteIncludeRooted = new System.Windows.Forms.CheckBox();
-      this.SplitPercentageValue = new System.Windows.Forms.ComboBox();
       this.WriteBookBreaks = new System.Windows.Forms.Button();
       this.groupBox1.SuspendLayout();
       this.groupBox2.SuspendLayout();
@@ -256,6 +256,15 @@
       this.groupBox2.TabIndex = 8;
       this.groupBox2.TabStop = false;
       this.groupBox2.Text = "Source Book";
+      // 
+      // SplitPercentageValue
+      // 
+      this.SplitPercentageValue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.SplitPercentageValue.FormattingEnabled = true;
+      this.SplitPercentageValue.Location = new System.Drawing.Point(118, 40);
+      this.SplitPercentageValue.Name = "SplitPercentageValue";
+      this.SplitPercentageValue.Size = new System.Drawing.Size(35, 21);
+      this.SplitPercentageValue.TabIndex = 20;
       // 
       // BookCompound
       // 
@@ -520,15 +529,6 @@
       this.WriteIncludeRooted.TabIndex = 13;
       this.WriteIncludeRooted.Text = "Include unrooted";
       this.WriteIncludeRooted.UseVisualStyleBackColor = true;
-      // 
-      // SplitPercentageValue
-      // 
-      this.SplitPercentageValue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-      this.SplitPercentageValue.FormattingEnabled = true;
-      this.SplitPercentageValue.Location = new System.Drawing.Point(118, 40);
-      this.SplitPercentageValue.Name = "SplitPercentageValue";
-      this.SplitPercentageValue.Size = new System.Drawing.Size(35, 21);
-      this.SplitPercentageValue.TabIndex = 20;
       // 
       // WriteBookBreaks
       // 

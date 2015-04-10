@@ -241,7 +241,7 @@ namespace LibroLister {
     /// <param name="BookPath"></param>
     /// <returns></returns>
     public bool WriteBook(string BookPath, double SplitPercentage) {
-      string NewPath = BookPath.Replace(Path.GetExtension(BookPath), ".markers.txt");
+      string NewPath = BookPath.Replace(Path.GetExtension(BookPath), ".chapters.txt");
 
       if (!File.Exists(BookPath)) return false;
       var BookFile = File.OpenText(BookPath);
@@ -262,6 +262,7 @@ namespace LibroLister {
         CurrentLength += Sentence.Length;
       }
       BookFile.Close();
+      NewFile.Close();
       return true;
     }
 

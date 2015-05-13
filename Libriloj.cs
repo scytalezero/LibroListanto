@@ -475,33 +475,6 @@ namespace LibroListanto {
       //Roots.Close();
     }
 
-    /// <summary>
-    /// Load the list of root words that should not be reduced.
-    /// </summary>
-    /// <param name="FilePath"></param>
-    public void ReadRoots(string FilePath) {
-      RootWords = new Dictionary<string, EOWord>();
-      string WordLine;
-
-      //Read the main roots file
-      var Roots = File.OpenText(Path.Combine(FilePath, "NPIV.txt"));
-      while (!Roots.EndOfStream) {
-        WordLine = Roots.ReadLine();
-        if (WordLine.Contains("/")) {
-          EOWord NewWord = ParseDictionaryRoot(WordLine);
-          if (!RootWords.ContainsKey(NewWord.Root)) RootWords.Add(NewWord.Root, NewWord);
-        }
-      }
-      Roots.Close();
-      //Read the user roots
-      Roots = File.OpenText(Path.Combine(FilePath, "UserRoots.txt"));
-      while (!Roots.EndOfStream) {
-        EOWord NewWord = ParseDictionaryRoot(Roots.ReadLine());
-        if (!RootWords.ContainsKey(NewWord.Root)) RootWords.Add(NewWord.Root, NewWord);
-      }
-      Roots.Close();
-    }
-
     private EOWord ParseDictionaryRoot(string WordLine) {
       var Buffer = WordLine.ToLower().Split('\t');
       EOWord NewWord = new EOWord();

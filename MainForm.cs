@@ -154,7 +154,10 @@ namespace LibroLister {
 
     private void WriteList_Click(object sender, EventArgs e) {
       WriteList.Enabled = false;
-      Librilo.WriteList(BookPath, WriteIncludeRooted.Checked, WriteIncludeDefinitions.Checked, (int)SplitPercentageValue.SelectedItem);
+      if (SplitPercentage.Checked)
+        Librilo.WriteList(BookPath, WriteIncludeRooted.Checked, WriteIncludeDefinitions.Checked, (int)SplitPercentageValue.SelectedItem);
+      else
+        Librilo.WriteList(BookPath, WriteIncludeRooted.Checked, WriteIncludeDefinitions.Checked);
       WriteList.Enabled = true;
     }
 
@@ -168,6 +171,13 @@ namespace LibroLister {
 
     private void WriteBookBreaks_Click(object sender, EventArgs e) {
       Librilo.WriteBook(BookPath, (int)SplitPercentageValue.SelectedItem);
+    }
+
+    private void SplitChapter_Click(object sender, EventArgs e) {
+      var Chapters = new ChaptersForm();
+
+      Chapters.Librilo = Librilo;
+      Chapters.ShowDialog();
     }
 
   }

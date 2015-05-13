@@ -311,7 +311,7 @@
       // 
       // ShowProper
       // 
-      this.ShowProper.Location = new System.Drawing.Point(265, 84);
+      this.ShowProper.Location = new System.Drawing.Point(265, 106);
       this.ShowProper.Name = "ShowProper";
       this.ShowProper.Size = new System.Drawing.Size(83, 23);
       this.ShowProper.TabIndex = 15;
@@ -321,7 +321,7 @@
       // 
       // ShowList
       // 
-      this.ShowList.Location = new System.Drawing.Point(265, 61);
+      this.ShowList.Location = new System.Drawing.Point(265, 79);
       this.ShowList.Name = "ShowList";
       this.ShowList.Size = new System.Drawing.Size(83, 23);
       this.ShowList.TabIndex = 14;
@@ -423,6 +423,7 @@
       this.SplitChapter.TabStop = true;
       this.SplitChapter.Text = "Chapter Split";
       this.SplitChapter.UseVisualStyleBackColor = true;
+      this.SplitChapter.Click += new System.EventHandler(this.SplitChapter_Click);
       // 
       // SplitPercentage
       // 

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LibroLister {
+namespace LibroListanto {
   public partial class ChaptersForm : Form {
     public Libriloj Librilo;
 

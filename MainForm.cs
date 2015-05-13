@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LibroLister {
+namespace LibroListanto {
   public partial class MainForm : Form {
     public MainForm() {
       InitializeComponent();

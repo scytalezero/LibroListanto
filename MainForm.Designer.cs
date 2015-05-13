@@ -1,4 +1,4 @@
-﻿namespace LibroLister {
+﻿namespace LibroListanto {
   partial class MainForm {
     /// <summary>
     /// Required designer variable.

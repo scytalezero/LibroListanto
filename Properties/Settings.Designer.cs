@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LibroLister.Properties {
+namespace LibroListanto.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

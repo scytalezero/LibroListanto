@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace LibroLister {
+namespace LibroListanto {
   public class Libriloj {
     public Dictionary<string, EOWord> KnownWords;
     public int KnownDupes = 0;

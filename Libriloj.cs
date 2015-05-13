@@ -9,16 +9,20 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace LibroLister {
-  class Libriloj {
+  public class Libriloj {
     public Dictionary<string, EOWord> KnownWords;
     public int KnownDupes = 0;
+    public string CurrentBookPath;
 
     public Dictionary<string, EOWord> RootWords, RootIrregulars;
     public Dictionary<string, EOWord> BookWords;
 
     public Dictionary<string, EOWord> BookProperWords;
     public int BookTotal, BookLength;
+    //Chapters
     public string BookChapterPattern= "^Ĉapitro \\d?\\d\\.1$";
+    public List<string> ChapterList;
+
     public class EOWord : IComparable<EOWord> {
       public string Root, Original, Chapter, RootEnding, ENTranslation, Definition;
       public bool Rooted, Compound, BookMatch, Irregular;
@@ -141,8 +145,10 @@ namespace LibroLister {
     /// </summary>
     /// <param name="FilePath"></param>
     /// <returns></returns>
-    public bool ReadBook(string FilePath) {
+    public bool ReadBook(string FilePath = "") {
+      if (FilePath == "") FilePath = CurrentBookPath;
       if (!File.Exists(FilePath)) return false;
+      CurrentBookPath = FilePath;
       var BookFile = File.OpenText(FilePath);
       string Sentence, CurrentChapter = "";
 
@@ -150,10 +156,12 @@ namespace LibroLister {
       BookLength = 0;     
       BookWords = new Dictionary<string, EOWord>();
       BookProperWords = new Dictionary<string, EOWord>();
+      ChapterList = new List<string>();
       while (!BookFile.EndOfStream) {
         Sentence = BookFile.ReadLine();
         if (Regex.IsMatch(Sentence, BookChapterPattern)) {
           CurrentChapter = Sentence;
+          if (!ChapterList.Contains(Sentence)) ChapterList.Add(Sentence);
           continue;
         }
         Sentence = AdjustCaps(Sentence);

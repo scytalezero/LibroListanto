@@ -68,6 +68,7 @@
       this.FilterUnrooted = new System.Windows.Forms.CheckBox();
       this.WriteIncludeRooted = new System.Windows.Forms.CheckBox();
       this.WriteBookBreaks = new System.Windows.Forms.Button();
+      this.WriteIncludeDefinitions = new System.Windows.Forms.CheckBox();
       this.groupBox1.SuspendLayout();
       this.groupBox2.SuspendLayout();
       this.SuspendLayout();
@@ -459,7 +460,7 @@
       // 
       this.WriteList.Location = new System.Drawing.Point(12, 279);
       this.WriteList.Name = "WriteList";
-      this.WriteList.Size = new System.Drawing.Size(75, 23);
+      this.WriteList.Size = new System.Drawing.Size(75, 31);
       this.WriteList.TabIndex = 9;
       this.WriteList.Text = "Write List";
       this.WriteList.UseVisualStyleBackColor = true;
@@ -476,7 +477,7 @@
       this.WordList.FullRowSelect = true;
       this.WordList.Location = new System.Drawing.Point(378, 38);
       this.WordList.Name = "WordList";
-      this.WordList.Size = new System.Drawing.Size(515, 258);
+      this.WordList.Size = new System.Drawing.Size(515, 272);
       this.WordList.TabIndex = 10;
       this.WordList.UseCompatibleStateImageBehavior = false;
       this.WordList.View = System.Windows.Forms.View.Details;
@@ -534,17 +535,28 @@
       // 
       this.WriteBookBreaks.Location = new System.Drawing.Point(264, 279);
       this.WriteBookBreaks.Name = "WriteBookBreaks";
-      this.WriteBookBreaks.Size = new System.Drawing.Size(108, 23);
+      this.WriteBookBreaks.Size = new System.Drawing.Size(108, 31);
       this.WriteBookBreaks.TabIndex = 14;
       this.WriteBookBreaks.Text = "Write Book Breaks";
       this.WriteBookBreaks.UseVisualStyleBackColor = true;
       this.WriteBookBreaks.Click += new System.EventHandler(this.WriteBookBreaks_Click);
       // 
+      // WriteIncludeDefinitions
+      // 
+      this.WriteIncludeDefinitions.AutoSize = true;
+      this.WriteIncludeDefinitions.Location = new System.Drawing.Point(94, 293);
+      this.WriteIncludeDefinitions.Name = "WriteIncludeDefinitions";
+      this.WriteIncludeDefinitions.Size = new System.Drawing.Size(111, 17);
+      this.WriteIncludeDefinitions.TabIndex = 15;
+      this.WriteIncludeDefinitions.Text = "Include definitions";
+      this.WriteIncludeDefinitions.UseVisualStyleBackColor = true;
+      // 
       // MainForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(905, 308);
+      this.ClientSize = new System.Drawing.Size(905, 315);
+      this.Controls.Add(this.WriteIncludeDefinitions);
       this.Controls.Add(this.WriteBookBreaks);
       this.Controls.Add(this.WriteIncludeRooted);
       this.Controls.Add(this.FilterUnrooted);
@@ -614,6 +626,7 @@
     private System.Windows.Forms.CheckBox WriteIncludeRooted;
     private System.Windows.Forms.ComboBox SplitPercentageValue;
     private System.Windows.Forms.Button WriteBookBreaks;
+    private System.Windows.Forms.CheckBox WriteIncludeDefinitions;
   }
 }
 

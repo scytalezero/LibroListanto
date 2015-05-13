@@ -196,7 +196,7 @@ namespace LibroLister {
     /// Outputs the current book list to a file.
     /// </summary>
     /// <param name="BookPath"></param>
-    public void WriteList(string BookPath, bool IncludeUnrooted, double SplitPercentage = 0) {
+    public void WriteList(string BookPath, bool IncludeUnrooted, bool IncludeDefinitions, double SplitPercentage = 0) {
       string CurrentChapter = "", PartSpeech;
       string ListPath = BookPath.Replace(Path.GetExtension(BookPath), ".list.txt");
       StreamWriter ListFile = new StreamWriter(ListPath, false, Encoding.UTF8);
@@ -230,7 +230,7 @@ namespace LibroLister {
           case "i": PartSpeech = "verb"; break;
           default: PartSpeech = ""; break;
         }
-        ListFile.WriteLine(Word.Root + Word.RootEnding + "\t" + Word.ENTranslation + "\t" + PartSpeech);
+        ListFile.WriteLine(Word.Root + Word.RootEnding + "\t" + ((IncludeDefinitions) ? Word.ENTranslation : "") + "\t" + PartSpeech);
       }
       ListFile.Close();
     }

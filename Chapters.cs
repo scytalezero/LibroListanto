@@ -23,6 +23,7 @@ namespace LibroLister {
         ChapterList.Items.Add("NO MATCHES");
         return;
       }
+      if (!Librilo.ChapterPatterns.Contains(Librilo.BookChapterPattern)) Librilo.ChapterPatterns.Add(Librilo.BookChapterPattern);
       foreach (string Chapter in Librilo.ChapterList) {
         ChapterList.Items.Add(Chapter);
       }
@@ -33,6 +34,9 @@ namespace LibroLister {
     }
 
     private void ChaptersForm_Shown(object sender, EventArgs e) {
+      foreach (string _Pattern in Librilo.ChapterPatterns) {
+        ChapterPattern.Items.Add(_Pattern);
+      }
       ChapterPattern.Text = Librilo.BookChapterPattern;
     }
   }

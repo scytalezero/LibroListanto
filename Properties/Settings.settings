@@ -8,5 +8,8 @@
     <Setting Name="LastBook" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="ChapterPatterns" Type="System.String" Scope="User">
+      <Value Profile="(Default)">^Ĉapitro \d?\d</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

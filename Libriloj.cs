@@ -20,8 +20,9 @@ namespace LibroLister {
     public Dictionary<string, EOWord> BookProperWords;
     public int BookTotal, BookLength;
     //Chapters
-    public string BookChapterPattern= "^Ĉapitro \\d?\\d\\.1$";
+    public string BookChapterPattern= "";
     public List<string> ChapterList;
+    public List<string> ChapterPatterns = new List<string>();
 
     public class EOWord : IComparable<EOWord> {
       public string Root, Original, Chapter, RootEnding, ENTranslation, Definition;

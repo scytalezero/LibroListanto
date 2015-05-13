@@ -46,5 +46,17 @@ namespace LibroLister.Properties {
                 this["LastBook"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("^Ĉapitro \\d?\\d")]
+        public string ChapterPatterns {
+            get {
+                return ((string)(this["ChapterPatterns"]));
+            }
+            set {
+                this["ChapterPatterns"] = value;
+            }
+        }
     }
 }

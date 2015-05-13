@@ -27,6 +27,9 @@ namespace LibroLister {
         SetKnownFile(Properties.Settings.Default.LastKnownWords);
       //if (Properties.Settings.Default.LastBook.Length > 0)
       //  BookPath = Properties.Settings.Default.LastBook;
+      foreach (string _Pattern in Properties.Settings.Default.ChapterPatterns.Split('\0')) {
+        Librilo.ChapterPatterns.Add(_Pattern);
+      }
 
       //KnownFile.BackColor = Color.Yellow;
       //Librilo.FilterPIV(Path.Combine(Application.StartupPath, "Content"));
@@ -178,6 +181,11 @@ namespace LibroLister {
 
       Chapters.Librilo = Librilo;
       Chapters.ShowDialog();
+    }
+
+    private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
+      Properties.Settings.Default.ChapterPatterns = String.Join("\0", Librilo.ChapterPatterns.ToArray());
+      Properties.Settings.Default.Save();
     }
 
   }

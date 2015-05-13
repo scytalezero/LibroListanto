@@ -22,3 +22,6 @@ Here are some limitations of the utility that I am aware of and may or may not f
 - Only UTF-8 sources files with accented letters are supported (ĉ, not cx or ch).
 - The utility is currently targeted at an English speaking audience.
 - The output is targetted at Memrise but should work with Anki as well.
+
+# Acknowledgements
+Thanks to Wilfred Hughes and his [ReVo-utilities project](https://github.com/Wilfred/ReVo-utilities) from which comes the dictionary used by this utility.

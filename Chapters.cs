@@ -23,7 +23,6 @@ namespace LibroListanto {
         ChapterList.Items.Add("NO MATCHES");
         return;
       }
-      if (!Librilo.ChapterPatterns.Contains(Librilo.BookChapterPattern)) Librilo.ChapterPatterns.Add(Librilo.BookChapterPattern);
       foreach (string Chapter in Librilo.ChapterList) {
         ChapterList.Items.Add(Chapter);
       }
@@ -38,6 +37,16 @@ namespace LibroListanto {
         ChapterPattern.Items.Add(_Pattern);
       }
       ChapterPattern.Text = Librilo.BookChapterPattern;
+    }
+
+    private void AcceptButton_Click(object sender, EventArgs e) {
+      if (!Librilo.ChapterPatterns.Contains(Librilo.BookChapterPattern)) Librilo.ChapterPatterns.Add(Librilo.BookChapterPattern);
+      this.Close();
+    }
+
+    private void CancelButton_Click(object sender, EventArgs e) {
+      Librilo.BookChapterPattern = "";
+      this.Close();
     }
   }
 }

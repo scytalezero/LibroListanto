@@ -20,9 +20,13 @@ namespace LibroListanto {
     private Libriloj.EOWord[] CurrentList;
 
     private void MainForm_Load(object sender, EventArgs e) {
-      ShowKnown.MouseClick += ShowKnown_MouseClick;
-      //Librilo.ReadRoots(Path.Combine(Application.StartupPath, "Content"));
-      Librilo.ReadJSONRoots(Path.Combine(Application.StartupPath, "Content"));
+      //Show the version
+      this.Text += " " + Application.ProductVersion.ToString();
+      //Show the loading splash and read the root file
+      Loading loading = new Loading();
+      loading.libriloj = Librilo;
+      loading.ShowDialog();
+
       if (Properties.Settings.Default.LastKnownWords.Length > 0)
         SetKnownFile(Properties.Settings.Default.LastKnownWords);
       //if (Properties.Settings.Default.LastBook.Length > 0)
@@ -30,11 +34,7 @@ namespace LibroListanto {
       foreach (string _Pattern in Properties.Settings.Default.ChapterPatterns.Split('\0')) {
         Librilo.ChapterPatterns.Add(_Pattern);
       }
-
-      //KnownFile.BackColor = Color.Yellow;
-      //Librilo.FilterPIV(Path.Combine(Application.StartupPath, "Content"));
-      //KnownFile.BackColor = Color.LightGreen;
-
+      //Add percentages to the split dropdown
       SplitPercentageValue.Items.Add(3);
       SplitPercentageValue.Items.Add(5);
       SplitPercentageValue.Items.Add(7);
@@ -60,6 +60,8 @@ namespace LibroListanto {
         }
         KnownUnrooted.Text = Unrooted.ToString();
         KnownCompound.Text = Compound.ToString();
+        ShowKnown.Enabled = true;
+        ShowIrregular.Enabled = true;
         ShowKnown_MouseClick(null, null);
       }
       else {
@@ -90,11 +92,24 @@ namespace LibroListanto {
         }
         BookTotal.Text = (Librilo.BookWords.Count + Known).ToString();
         BookKnown.Text = Known.ToString();
+        EnableBookControls();
         ShowList_Click(null, null);
       }
       else {
         TXTFile.BackColor = Color.Red;
       }
+    }
+
+    private void EnableBookControls() {
+      WriteList.Enabled = true;
+      WriteBookBreaks.Enabled = true;
+      ShowList.Enabled = true;
+      ShowProper.Enabled = true;
+      SplitPercentage.Enabled = true;
+      SplitPercentageValue.Enabled = true;
+      SplitChapter.Enabled = true;
+      WriteIncludeDefinitions.Enabled = true;
+      WriteIncludeRooted.Enabled = true;
     }
 
     private void KnownFile_Click(object sender, EventArgs e) {
@@ -116,6 +131,7 @@ namespace LibroListanto {
     /// <param name="Label"></param>
     private void ShowWords(Libriloj.EOWord[] Words = null, string Label = null) {
       if (Words == null) {
+        if (CurrentList == null) return;
         Words = CurrentList;
       }
       else {
@@ -140,28 +156,27 @@ namespace LibroListanto {
     }
 
     void ShowKnown_MouseClick(object sender, MouseEventArgs e) {
-      ShowWords(Librilo.KnownWords.Values.ToArray<Libriloj.EOWord>(), "Known Words");
+      ShowWords(Librilo.KnownWords.Values.ToArray<Libriloj.EOWord>(), "Known Roots");
     }
 
     private void ShowList_Click(object sender, EventArgs e) {
-      ShowWords(Librilo.BookWords.Values.ToArray<Libriloj.EOWord>(), "Book List");
+      ShowWords(Librilo.BookWords.Values.ToArray<Libriloj.EOWord>(), "Book Unknown Words");
     }
 
     private void ShowProper_Click(object sender, EventArgs e) {
-      ShowWords(Librilo.BookProperWords.Values.ToArray<Libriloj.EOWord>(), "Proper Words");
+      ShowWords(Librilo.BookProperWords.Values.ToArray<Libriloj.EOWord>(), "Book Proper Words");
     }
 
     private void ShowIrregular_Click(object sender, EventArgs e) {
-      ShowWords(Librilo.RootIrregulars.Values.ToArray<Libriloj.EOWord>(), "Irregular Roots");
+      ShowWords(Librilo.RootIrregulars.Values.ToArray<Libriloj.EOWord>(), "Known Irregular Roots");
     }
 
     private void WriteList_Click(object sender, EventArgs e) {
-      WriteList.Enabled = false;
       if (SplitPercentage.Checked)
         Librilo.WriteList(BookPath, WriteIncludeRooted.Checked, WriteIncludeDefinitions.Checked, (int)SplitPercentageValue.SelectedItem);
       else
         Librilo.WriteList(BookPath, WriteIncludeRooted.Checked, WriteIncludeDefinitions.Checked);
-      WriteList.Enabled = true;
+      MessageBox.Show("Your study list has been created.");
     }
 
     private void textBox1_TextChanged(object sender, EventArgs e) {
@@ -174,6 +189,7 @@ namespace LibroListanto {
 
     private void WriteBookBreaks_Click(object sender, EventArgs e) {
       Librilo.WriteBook(BookPath, (int)SplitPercentageValue.SelectedItem);
+      MessageBox.Show("Your book has been duplicated with the addition of generated chapters.");
     }
 
     private void SplitChapter_Click(object sender, EventArgs e) {
@@ -181,11 +197,33 @@ namespace LibroListanto {
 
       Chapters.Librilo = Librilo;
       Chapters.ShowDialog();
+      if (Librilo.BookChapterPattern != "") {
+        WriteBookBreaks.Enabled = false;
+      }
+      else {
+        WriteBookBreaks.Enabled = true;
+        SplitPercentage.Checked = true;
+      }
+
+
     }
 
     private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
       Properties.Settings.Default.ChapterPatterns = String.Join("\0", Librilo.ChapterPatterns.ToArray());
       Properties.Settings.Default.Save();
+    }
+
+    private void Control_MouseEnter(object sender, EventArgs e) {
+      if (((Control)sender).Tag != null)
+        toolStripStatus.Text = ((Control)sender).Tag.ToString();
+    }
+
+    private void Control_MouseLeave(object sender, EventArgs e) {
+      toolStripStatus.Text = "";
+    }
+
+    private void SplitPercentage_Click(object sender, EventArgs e) {
+      WriteBookBreaks.Enabled = true;
     }
 
   }

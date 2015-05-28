@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace LibroListanto {
   public class Libriloj {
-    public Dictionary<string, EOWord> KnownWords;
+    public Dictionary<string, EOWord> KnownWords = new Dictionary<string, EOWord>();
     public int KnownDupes = 0;
     public string CurrentBookPath;
 
@@ -100,48 +100,6 @@ namespace LibroListanto {
     }
 
     /// <summary>
-    /// Reads a series of root words and checks them against affixes for consistency.
-    /// </summary>
-    /// <param name="FilePath"></param>
-    /// <returns></returns>
-    public bool FilterPIV(string ContentPath) {
-      var PIVFile = File.OpenText(Path.Combine(ContentPath, "NPIV.txt"));
-      string Buffer;
-      var RootWords = new HashSet<string>();
-
-      //Parse the PIV for irregular roots only
-      while (!PIVFile.EndOfStream) {
-        Buffer = PIVFile.ReadLine();
-        if (Buffer.IndexOf("/") > 0) Buffer = Buffer.Substring(0, Buffer.IndexOf("/"));
-        foreach (string Prefix in Prefixes) {
-          if (Buffer.StartsWith(Prefix)) {
-            RootWords.Add(Buffer);
-            continue;
-          }
-        }
-        foreach (string Postfix in Postfixes) {
-          if (Buffer.EndsWith(Postfix)) {
-            RootWords.Add(Buffer);
-            continue;
-          }
-        }
-      }
-      PIVFile.Close();
-
-      //Get the additional words
-      string PIVPlusWords = File.ReadAllText(Path.Combine(ContentPath, "PIVPlus.txt"));
-
-      //Write the conglomeration
-      StreamWriter List = new StreamWriter(Path.Combine(ContentPath, "IrregularRoots.txt"), false, Encoding.UTF8);
-      List.Write(PIVPlusWords);
-      foreach (string Word in RootWords) {
-        List.WriteLine(Word);
-      }
-      List.Close();
-      return true;
-    }
-
-    /// <summary>
     /// Reads the book file and processes it.
     /// </summary>
     /// <param name="FilePath"></param>
@@ -160,7 +118,7 @@ namespace LibroListanto {
       ChapterList = new List<string>();
       while (!BookFile.EndOfStream) {
         Sentence = BookFile.ReadLine();
-        if (Regex.IsMatch(Sentence, BookChapterPattern)) {
+        if (BookChapterPattern != "" && Regex.IsMatch(Sentence, BookChapterPattern)) {
           CurrentChapter = Sentence;
           if (!ChapterList.Contains(Sentence)) ChapterList.Add(Sentence);
           continue;
@@ -439,7 +397,6 @@ namespace LibroListanto {
       RootWords = new Dictionary<string, EOWord>();
       RootIrregulars = new Dictionary<string, EOWord>();
       //Read the main roots file
-      //JSON = JObject.Parse(File.ReadAllText(Path.Combine(FilePath, "dictionary.json")));
       using (StreamReader _File = File.OpenText(Path.Combine(FilePath, "dictionary.json")))
       using (JsonTextReader _Reader = new JsonTextReader(_File)) {
         JSON = (JObject)JToken.ReadFrom(_Reader);
@@ -450,6 +407,7 @@ namespace LibroListanto {
           EOWord _Word = new EOWord();
           _Word.Root = RWord.Value.root;
           _Word.Original = RWord.Name;
+          //The word is considered irregular if it doesn't have the typical part of speech ending
           if (_Word.Original.Length == _Word.Root.Length) {
             _Word.Irregular = true;
             RootIrregulars.Add(_Word.Root, _Word);
@@ -458,15 +416,16 @@ namespace LibroListanto {
             _Word.RootEnding = _Word.Original.Substring(_Word.Original.Length - 1);
           }
           _Word.Rooted = true;
-          if (RWord.Value.definitions.Count > 0 && RWord.Value.definitions[0].translations.en != null) {
-            _Word.ENTranslation = RWord.Value.definitions[0].translations.en[0];
-            _Word.Definition = RWord.Value.definitions[0]["primary definition"];
+          //Add EO definition and EN translation if we have them
+          if (RWord.Value.definitions.Count > 0) {
+            //_Word.Definition = RWord.Value.definitions[0]["primary definition"]; //Unused at the moment
+            if (RWord.Value.definitions[0].translations.en != null)
+              _Word.ENTranslation = RWord.Value.definitions[0].translations.en[0];
           }
-          //_Word.Definition = 
           RootWords.Add(_Word.Root, _Word);
         }
       }
-      //Read the user roots
+      //Read the user roots (not used for now)
       //var Roots = File.OpenText(Path.Combine(FilePath, "UserRoots.txt"));
       //while (!Roots.EndOfStream) {
       //  EOWord NewWord = ParseDictionaryRoot(Roots.ReadLine());

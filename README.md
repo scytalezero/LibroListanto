@@ -14,8 +14,16 @@ If you don't already have your list of words in a file or in LWT, I also wrote a
 1. Install the user script [from here](https://github.com/scytalezero/MemriseUtilities).
 1. Follow the directions on the MemriseUtilities page to export your completed Memrise courses into LWT.
 
-# Using LibroListanto
+# Installation
+Just extract the files from a release into a folder somewhere on your drive. That's it!
 
+# Using LibroListanto
+Once you run LibroListanto.exe, it will take a few moments to read the Esperanto roots file. Once the UI displays, you can hover over controls with your mouse to see tips on what they do. Briefly, the process works like this:
+
+1. Click the first yellow box and choose your list of known roots (mentioned in Pre-requisites). After a file has been successfully read, it will be remembered for the next run.
+2. Click the second yellow box and choose the book you want to read (also mentioned in Pre-requisites). The book will be parsed and you will see stats and the list of words that will be written.
+3. Click the "Create List" button and your study list will be written to the same folder as your book.
+4. Optionally click "Write Book Breaks" if you used a percentage split. This will create a new copy of your book with the addition of created chapters at each percentage break point to aid in synchronizing your reading and study.
 
 # Limitations
 Here are some limitations of the utility that I am aware of and may or may not fix at some point:

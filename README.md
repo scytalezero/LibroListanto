@@ -3,7 +3,7 @@ This free utility creates word lists for Esperanto reading study. It combines a 
 
 # Pre-requisites
 You will need the following things to use LibroListanto:
-- Microsoft .NET framework 4.5 (you may already have this)
+- [Microsoft .NET framework 4.5](https://www.microsoft.com/en-us/download/details.aspx?id=42643) (you may already have this and LibroListanto will notify you on first run if you do not)
 - A UTF-8 text file containing the words you already know. Each word should be on its own line. It's okay if there are additional fields for the word if they are separated by tabs and the word is the first one. This is the default [Learning With Texts](http://www.lwtfi3m.co/lwt/) (LWT) export format.
 - A UTF-8 text file of the text for which you want to create a learning list.
 

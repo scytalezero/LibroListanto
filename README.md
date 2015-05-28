@@ -1,5 +1,5 @@
 # LibroListanto
-This utility creates word lists for Esperanto reading study. It combines a list of Esperanto words you already know with a text you want to read and produces a list of the roots that you need to learn. That list can then be used to create a Memrise course so that you can learn the new words in advance of trying to read each chapter. For me this produced a better experience than trying to combine reading and learning vocabulary at the same time.
+This free utility creates word lists for Esperanto reading study. It combines a list of Esperanto words you already know with a text you want to read and produces a list of only the new roots that you need to learn. That list can then be used to create a Memrise course (it should also work with an Anki import) so that you can learn the new words in advance of trying to read each chapter. For me this produced a better experience than trying to combine reading and learning vocabulary at the same time.
 
 # Pre-requisites
 You will need the following things to use LibroListanto:

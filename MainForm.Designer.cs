@@ -69,8 +69,13 @@
       this.WriteIncludeRooted = new System.Windows.Forms.CheckBox();
       this.WriteBookBreaks = new System.Windows.Forms.Button();
       this.WriteIncludeDefinitions = new System.Windows.Forms.CheckBox();
+      this.groupBox3 = new System.Windows.Forms.GroupBox();
+      this.statusStrip = new System.Windows.Forms.StatusStrip();
+      this.toolStripStatus = new System.Windows.Forms.ToolStripStatusLabel();
       this.groupBox1.SuspendLayout();
       this.groupBox2.SuspendLayout();
+      this.groupBox3.SuspendLayout();
+      this.statusStrip.SuspendLayout();
       this.SuspendLayout();
       // 
       // label1
@@ -85,13 +90,17 @@
       // 
       // KnownFile
       // 
+      this.KnownFile.BackColor = System.Drawing.Color.Khaki;
       this.KnownFile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.KnownFile.Location = new System.Drawing.Point(71, 26);
       this.KnownFile.Name = "KnownFile";
       this.KnownFile.Size = new System.Drawing.Size(277, 22);
       this.KnownFile.TabIndex = 1;
+      this.KnownFile.Tag = "Click to choose your file of known words.";
       this.KnownFile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       this.KnownFile.Click += new System.EventHandler(this.KnownFile_Click);
+      this.KnownFile.MouseEnter += new System.EventHandler(this.Control_MouseEnter);
+      this.KnownFile.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
       // 
       // groupBox1
       // 
@@ -113,17 +122,21 @@
       this.groupBox1.Size = new System.Drawing.Size(360, 111);
       this.groupBox1.TabIndex = 6;
       this.groupBox1.TabStop = false;
-      this.groupBox1.Text = "Known Words";
+      this.groupBox1.Text = "1) Known Words";
       // 
       // ShowIrregular
       // 
+      this.ShowIrregular.Enabled = false;
       this.ShowIrregular.Location = new System.Drawing.Point(265, 82);
       this.ShowIrregular.Name = "ShowIrregular";
       this.ShowIrregular.Size = new System.Drawing.Size(83, 23);
       this.ShowIrregular.TabIndex = 11;
+      this.ShowIrregular.Tag = "Show the list of irregular roots you already know.";
       this.ShowIrregular.Text = "Show Irregular";
       this.ShowIrregular.UseVisualStyleBackColor = true;
       this.ShowIrregular.Click += new System.EventHandler(this.ShowIrregular_Click);
+      this.ShowIrregular.MouseEnter += new System.EventHandler(this.Control_MouseEnter);
+      this.ShowIrregular.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
       // 
       // KnownCompound
       // 
@@ -169,12 +182,17 @@
       // 
       // ShowKnown
       // 
+      this.ShowKnown.Enabled = false;
       this.ShowKnown.Location = new System.Drawing.Point(265, 59);
       this.ShowKnown.Name = "ShowKnown";
       this.ShowKnown.Size = new System.Drawing.Size(83, 23);
       this.ShowKnown.TabIndex = 6;
+      this.ShowKnown.Tag = "Show the list of words you already know.";
       this.ShowKnown.Text = "Show Known";
       this.ShowKnown.UseVisualStyleBackColor = true;
+      this.ShowKnown.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ShowKnown_MouseClick);
+      this.ShowKnown.MouseEnter += new System.EventHandler(this.Control_MouseEnter);
+      this.ShowKnown.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
       // 
       // KnownDupeCount
       // 
@@ -256,16 +274,20 @@
       this.groupBox2.Size = new System.Drawing.Size(360, 144);
       this.groupBox2.TabIndex = 8;
       this.groupBox2.TabStop = false;
-      this.groupBox2.Text = "Source Book";
+      this.groupBox2.Text = "2) Source Book";
       // 
       // SplitPercentageValue
       // 
       this.SplitPercentageValue.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+      this.SplitPercentageValue.Enabled = false;
       this.SplitPercentageValue.FormattingEnabled = true;
       this.SplitPercentageValue.Location = new System.Drawing.Point(118, 40);
       this.SplitPercentageValue.Name = "SplitPercentageValue";
       this.SplitPercentageValue.Size = new System.Drawing.Size(35, 21);
       this.SplitPercentageValue.TabIndex = 20;
+      this.SplitPercentageValue.Tag = "Choose the percentage used to split the book into sections for your study list.";
+      this.SplitPercentageValue.MouseEnter += new System.EventHandler(this.Control_MouseEnter);
+      this.SplitPercentageValue.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
       // 
       // BookCompound
       // 
@@ -311,23 +333,31 @@
       // 
       // ShowProper
       // 
-      this.ShowProper.Location = new System.Drawing.Point(265, 106);
+      this.ShowProper.Enabled = false;
+      this.ShowProper.Location = new System.Drawing.Point(265, 89);
       this.ShowProper.Name = "ShowProper";
       this.ShowProper.Size = new System.Drawing.Size(83, 23);
       this.ShowProper.TabIndex = 15;
+      this.ShowProper.Tag = "Show the words from your book suspected to be proper nouns.";
       this.ShowProper.Text = "Show Proper";
       this.ShowProper.UseVisualStyleBackColor = true;
       this.ShowProper.Click += new System.EventHandler(this.ShowProper_Click);
+      this.ShowProper.MouseEnter += new System.EventHandler(this.Control_MouseEnter);
+      this.ShowProper.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
       // 
       // ShowList
       // 
-      this.ShowList.Location = new System.Drawing.Point(265, 79);
+      this.ShowList.Enabled = false;
+      this.ShowList.Location = new System.Drawing.Point(265, 66);
       this.ShowList.Name = "ShowList";
       this.ShowList.Size = new System.Drawing.Size(83, 23);
       this.ShowList.TabIndex = 14;
+      this.ShowList.Tag = "Show the list of words found in your book.";
       this.ShowList.Text = "Show List";
       this.ShowList.UseVisualStyleBackColor = true;
       this.ShowList.Click += new System.EventHandler(this.ShowList_Click);
+      this.ShowList.MouseEnter += new System.EventHandler(this.Control_MouseEnter);
+      this.ShowList.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
       // 
       // BookProper
       // 
@@ -416,36 +446,49 @@
       // SplitChapter
       // 
       this.SplitChapter.AutoSize = true;
+      this.SplitChapter.Enabled = false;
       this.SplitChapter.Location = new System.Drawing.Point(175, 41);
       this.SplitChapter.Name = "SplitChapter";
       this.SplitChapter.Size = new System.Drawing.Size(85, 17);
       this.SplitChapter.TabIndex = 5;
       this.SplitChapter.TabStop = true;
+      this.SplitChapter.Tag = "Click to find chapters in your book which can separate your study list.";
       this.SplitChapter.Text = "Chapter Split";
       this.SplitChapter.UseVisualStyleBackColor = true;
       this.SplitChapter.Click += new System.EventHandler(this.SplitChapter_Click);
+      this.SplitChapter.MouseEnter += new System.EventHandler(this.Control_MouseEnter);
+      this.SplitChapter.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
       // 
       // SplitPercentage
       // 
       this.SplitPercentage.AutoSize = true;
       this.SplitPercentage.Checked = true;
+      this.SplitPercentage.Enabled = false;
       this.SplitPercentage.Location = new System.Drawing.Point(9, 41);
       this.SplitPercentage.Name = "SplitPercentage";
       this.SplitPercentage.Size = new System.Drawing.Size(103, 17);
       this.SplitPercentage.TabIndex = 4;
       this.SplitPercentage.TabStop = true;
+      this.SplitPercentage.Tag = "Separates your study list by percentages of the book.";
       this.SplitPercentage.Text = "Percentage Split";
       this.SplitPercentage.UseVisualStyleBackColor = true;
+      this.SplitPercentage.Click += new System.EventHandler(this.SplitPercentage_Click);
+      this.SplitPercentage.MouseEnter += new System.EventHandler(this.Control_MouseEnter);
+      this.SplitPercentage.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
       // 
       // TXTFile
       // 
+      this.TXTFile.BackColor = System.Drawing.Color.Khaki;
       this.TXTFile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.TXTFile.Location = new System.Drawing.Point(71, 16);
       this.TXTFile.Name = "TXTFile";
       this.TXTFile.Size = new System.Drawing.Size(277, 22);
       this.TXTFile.TabIndex = 3;
+      this.TXTFile.Tag = "Click to choose the book from which you want to generate a vocabulary list.";
       this.TXTFile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
       this.TXTFile.Click += new System.EventHandler(this.TXTFile_Click);
+      this.TXTFile.MouseEnter += new System.EventHandler(this.Control_MouseEnter);
+      this.TXTFile.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
       // 
       // label5
       // 
@@ -459,13 +502,17 @@
       // 
       // WriteList
       // 
-      this.WriteList.Location = new System.Drawing.Point(12, 279);
+      this.WriteList.Enabled = false;
+      this.WriteList.Location = new System.Drawing.Point(9, 19);
       this.WriteList.Name = "WriteList";
       this.WriteList.Size = new System.Drawing.Size(75, 31);
       this.WriteList.TabIndex = 9;
-      this.WriteList.Text = "Write List";
+      this.WriteList.Tag = "Create your study list as [book file name].list.txt.";
+      this.WriteList.Text = "Create List";
       this.WriteList.UseVisualStyleBackColor = true;
       this.WriteList.Click += new System.EventHandler(this.WriteList_Click);
+      this.WriteList.MouseEnter += new System.EventHandler(this.Control_MouseEnter);
+      this.WriteList.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
       // 
       // WordList
       // 
@@ -478,10 +525,14 @@
       this.WordList.FullRowSelect = true;
       this.WordList.Location = new System.Drawing.Point(378, 38);
       this.WordList.Name = "WordList";
-      this.WordList.Size = new System.Drawing.Size(515, 272);
+      this.WordList.Size = new System.Drawing.Size(515, 297);
       this.WordList.TabIndex = 10;
+      this.WordList.Tag = "The list shows compound roots in blue and unrooted words with a yellow background" +
+    ".";
       this.WordList.UseCompatibleStateImageBehavior = false;
       this.WordList.View = System.Windows.Forms.View.Details;
+      this.WordList.MouseEnter += new System.EventHandler(this.Control_MouseEnter);
+      this.WordList.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
       // 
       // columnHeader1
       // 
@@ -509,7 +560,10 @@
       this.FilterText.Name = "FilterText";
       this.FilterText.Size = new System.Drawing.Size(170, 20);
       this.FilterText.TabIndex = 11;
+      this.FilterText.Tag = "Enter a search string to filter the currently displayed word list.";
       this.FilterText.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+      this.FilterText.MouseEnter += new System.EventHandler(this.Control_MouseEnter);
+      this.FilterText.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
       // 
       // FilterUnrooted
       // 
@@ -518,52 +572,98 @@
       this.FilterUnrooted.Name = "FilterUnrooted";
       this.FilterUnrooted.Size = new System.Drawing.Size(70, 17);
       this.FilterUnrooted.TabIndex = 12;
+      this.FilterUnrooted.Tag = "Check to show only unrooted words from the current list.";
       this.FilterUnrooted.Text = "Unrooted";
       this.FilterUnrooted.UseVisualStyleBackColor = true;
       this.FilterUnrooted.CheckedChanged += new System.EventHandler(this.FilterUnrooted_CheckedChanged);
+      this.FilterUnrooted.MouseEnter += new System.EventHandler(this.Control_MouseEnter);
+      this.FilterUnrooted.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
       // 
       // WriteIncludeRooted
       // 
       this.WriteIncludeRooted.AutoSize = true;
-      this.WriteIncludeRooted.Location = new System.Drawing.Point(94, 279);
+      this.WriteIncludeRooted.Enabled = false;
+      this.WriteIncludeRooted.Location = new System.Drawing.Point(91, 19);
       this.WriteIncludeRooted.Name = "WriteIncludeRooted";
       this.WriteIncludeRooted.Size = new System.Drawing.Size(106, 17);
       this.WriteIncludeRooted.TabIndex = 13;
+      this.WriteIncludeRooted.Tag = "Include words that could not be verified in the root list.";
       this.WriteIncludeRooted.Text = "Include unrooted";
       this.WriteIncludeRooted.UseVisualStyleBackColor = true;
+      this.WriteIncludeRooted.MouseEnter += new System.EventHandler(this.Control_MouseEnter);
+      this.WriteIncludeRooted.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
       // 
       // WriteBookBreaks
       // 
-      this.WriteBookBreaks.Location = new System.Drawing.Point(264, 279);
+      this.WriteBookBreaks.Enabled = false;
+      this.WriteBookBreaks.Location = new System.Drawing.Point(246, 19);
       this.WriteBookBreaks.Name = "WriteBookBreaks";
       this.WriteBookBreaks.Size = new System.Drawing.Size(108, 31);
       this.WriteBookBreaks.TabIndex = 14;
+      this.WriteBookBreaks.Tag = "Copy your book file with generated chapters based on the percentage split to [boo" +
+    "k file name].chapters.txt..";
       this.WriteBookBreaks.Text = "Write Book Breaks";
       this.WriteBookBreaks.UseVisualStyleBackColor = true;
       this.WriteBookBreaks.Click += new System.EventHandler(this.WriteBookBreaks_Click);
+      this.WriteBookBreaks.MouseEnter += new System.EventHandler(this.Control_MouseEnter);
+      this.WriteBookBreaks.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
       // 
       // WriteIncludeDefinitions
       // 
       this.WriteIncludeDefinitions.AutoSize = true;
-      this.WriteIncludeDefinitions.Location = new System.Drawing.Point(94, 293);
+      this.WriteIncludeDefinitions.Enabled = false;
+      this.WriteIncludeDefinitions.Location = new System.Drawing.Point(91, 33);
       this.WriteIncludeDefinitions.Name = "WriteIncludeDefinitions";
       this.WriteIncludeDefinitions.Size = new System.Drawing.Size(111, 17);
       this.WriteIncludeDefinitions.TabIndex = 15;
+      this.WriteIncludeDefinitions.Tag = "For Memrise, you typically will not want definitions in your list. Memrise will a" +
+    "dd them for you.";
       this.WriteIncludeDefinitions.Text = "Include definitions";
       this.WriteIncludeDefinitions.UseVisualStyleBackColor = true;
+      this.WriteIncludeDefinitions.MouseEnter += new System.EventHandler(this.Control_MouseEnter);
+      this.WriteIncludeDefinitions.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
+      // 
+      // groupBox3
+      // 
+      this.groupBox3.Controls.Add(this.WriteList);
+      this.groupBox3.Controls.Add(this.WriteIncludeDefinitions);
+      this.groupBox3.Controls.Add(this.WriteIncludeRooted);
+      this.groupBox3.Controls.Add(this.WriteBookBreaks);
+      this.groupBox3.Location = new System.Drawing.Point(12, 279);
+      this.groupBox3.Name = "groupBox3";
+      this.groupBox3.Size = new System.Drawing.Size(360, 56);
+      this.groupBox3.TabIndex = 16;
+      this.groupBox3.TabStop = false;
+      this.groupBox3.Text = "3) Write List";
+      // 
+      // statusStrip
+      // 
+      this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatus});
+      this.statusStrip.Location = new System.Drawing.Point(0, 341);
+      this.statusStrip.Name = "statusStrip";
+      this.statusStrip.Size = new System.Drawing.Size(905, 22);
+      this.statusStrip.TabIndex = 17;
+      this.statusStrip.Text = "statusStrip1";
+      // 
+      // toolStripStatus
+      // 
+      this.toolStripStatus.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+      this.toolStripStatus.Name = "toolStripStatus";
+      this.toolStripStatus.Size = new System.Drawing.Size(890, 17);
+      this.toolStripStatus.Spring = true;
+      this.toolStripStatus.Text = "Information tips appear here when you mouseover controls.";
       // 
       // MainForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(905, 315);
-      this.Controls.Add(this.WriteIncludeDefinitions);
-      this.Controls.Add(this.WriteBookBreaks);
-      this.Controls.Add(this.WriteIncludeRooted);
+      this.ClientSize = new System.Drawing.Size(905, 363);
+      this.Controls.Add(this.statusStrip);
+      this.Controls.Add(this.groupBox3);
       this.Controls.Add(this.FilterUnrooted);
       this.Controls.Add(this.FilterText);
       this.Controls.Add(this.WordList);
-      this.Controls.Add(this.WriteList);
       this.Controls.Add(this.groupBox2);
       this.Controls.Add(this.WordListLabel);
       this.Controls.Add(this.groupBox1);
@@ -576,6 +676,10 @@
       this.groupBox1.PerformLayout();
       this.groupBox2.ResumeLayout(false);
       this.groupBox2.PerformLayout();
+      this.groupBox3.ResumeLayout(false);
+      this.groupBox3.PerformLayout();
+      this.statusStrip.ResumeLayout(false);
+      this.statusStrip.PerformLayout();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -629,6 +733,9 @@
     private System.Windows.Forms.ComboBox SplitPercentageValue;
     private System.Windows.Forms.Button WriteBookBreaks;
     private System.Windows.Forms.CheckBox WriteIncludeDefinitions;
+    private System.Windows.Forms.GroupBox groupBox3;
+    private System.Windows.Forms.StatusStrip statusStrip;
+    private System.Windows.Forms.ToolStripStatusLabel toolStripStatus;
   }
 }
 

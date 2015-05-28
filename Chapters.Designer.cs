@@ -27,6 +27,8 @@
       this.TestButton = new System.Windows.Forms.Button();
       this.ChapterList = new System.Windows.Forms.ListBox();
       this.ChapterPattern = new System.Windows.Forms.ComboBox();
+      this.AcceptButton = new System.Windows.Forms.Button();
+      this.CancelButton = new System.Windows.Forms.Button();
       this.SuspendLayout();
       // 
       // label1
@@ -65,11 +67,34 @@
       this.ChapterPattern.TabIndex = 4;
       this.ChapterPattern.TextChanged += new System.EventHandler(this.ChapterPattern_TextChanged);
       // 
+      // AcceptButton
+      // 
+      this.AcceptButton.Location = new System.Drawing.Point(230, 261);
+      this.AcceptButton.Name = "AcceptButton";
+      this.AcceptButton.Size = new System.Drawing.Size(214, 26);
+      this.AcceptButton.TabIndex = 5;
+      this.AcceptButton.Text = "Accept";
+      this.AcceptButton.UseVisualStyleBackColor = true;
+      this.AcceptButton.Click += new System.EventHandler(this.AcceptButton_Click);
+      // 
+      // CancelButton
+      // 
+      this.CancelButton.Location = new System.Drawing.Point(5, 261);
+      this.CancelButton.Name = "CancelButton";
+      this.CancelButton.Size = new System.Drawing.Size(219, 26);
+      this.CancelButton.TabIndex = 6;
+      this.CancelButton.Text = "Cancel";
+      this.CancelButton.UseVisualStyleBackColor = true;
+      this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+      // 
       // ChaptersForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(450, 261);
+      this.ClientSize = new System.Drawing.Size(450, 293);
+      this.ControlBox = false;
+      this.Controls.Add(this.CancelButton);
+      this.Controls.Add(this.AcceptButton);
       this.Controls.Add(this.ChapterPattern);
       this.Controls.Add(this.ChapterList);
       this.Controls.Add(this.TestButton);
@@ -93,5 +118,7 @@
     private System.Windows.Forms.Button TestButton;
     private System.Windows.Forms.ListBox ChapterList;
     private System.Windows.Forms.ComboBox ChapterPattern;
+    private System.Windows.Forms.Button AcceptButton;
+    private System.Windows.Forms.Button CancelButton;
   }
 }

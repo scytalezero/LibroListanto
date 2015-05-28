@@ -15,7 +15,7 @@ If you don't already have your list of words in a file or in LWT, I also wrote a
 1. Follow the directions on the MemriseUtilities page to export your completed Memrise courses into LWT.
 
 # Installation
-Just extract the files from a release into a folder somewhere on your drive. That's it!
+Just extract the files from [the latest release](https://github.com/scytalezero/LibroListanto/releases) into a folder somewhere on your drive. That's it!
 
 # Using LibroListanto
 Once you run LibroListanto.exe, it will take a few moments to read the Esperanto roots file. Once the UI displays, you can hover over controls with your mouse to see tips on what they do. Briefly, the process works like this:

@@ -1,6 +1,8 @@
 # LibroListanto
 This free utility creates word lists for Esperanto reading study. It combines a list of Esperanto words you already know with a text you want to read and produces a list of only the new roots that you need to learn. That list can then be used to create a Memrise course (it should also work with an Anki import) so that you can learn the new words in advance of trying to read each chapter. For me this produced a better experience than trying to combine reading and learning vocabulary at the same time.
 
+![Screenshot](https://github.com/scytalezero/LibroListanto/raw/master/Images/Screenshot1.png)
+
 # Pre-requisites
 You will need the following things to use LibroListanto:
 - [Microsoft .NET framework 4.5](https://www.microsoft.com/en-us/download/details.aspx?id=42643) (you may already have this and LibroListanto will notify you on first run if you do not)
@@ -20,8 +22,8 @@ Just extract the files from [the latest release](https://github.com/scytalezero/
 # Using LibroListanto
 Once you run LibroListanto.exe, it will take a few moments to read the Esperanto roots file. Once the UI displays, you can hover over controls with your mouse to see tips on what they do. Briefly, the process works like this:
 
-1. Click the first yellow box and choose your list of known roots (mentioned in Pre-requisites). After a file has been successfully read, it will be remembered for the next run.
-2. Click the second yellow box and choose the book you want to read (also mentioned in Pre-requisites). The book will be parsed and you will see stats and the list of words that will be written.
+1. Click the first yellow box and choose your list of known roots (mentioned in Pre-requisites). After a file has been successfully read, the box will turn green, and it will be remembered for the next run.
+2. Click the second yellow box and choose the book you want to read (also mentioned in Pre-requisites). The book will be parsed, the box will turn green, and you will see stats and the list of words that will be written.
 3. Click the "Create List" button and your study list will be written to the same folder as your book.
 4. Optionally click "Write Book Breaks" if you used a percentage split. This will create a new copy of your book with the addition of created chapters at each percentage break point to aid in synchronizing your reading and study.
 
